@@ -11,19 +11,33 @@ void printArray(int* A, int n){
 	printf("%d\n", A[n - 1]);
 }
 
-int shellSort(int* A, int n){
+void insertionSort(int* A, int n, int h){
+	for (int i = h; i < n; ++i){
+		for(int j = i - h;0 <= j && A[j] > A[j + h] ;j -= h){
+			swap(A[j], A[j + h]);
+			printArray(A, n);
+		}
+	}
+}
 
-	int sw = 0;
+void shellSort2(int* A, int n){
+
+	for (int h = n / 2; 0 < h; h /= 2){
+		insertionSort(A, n, h);
+	}
+}
+
+
+void shellSort(int* A, int n){
+
 	for (int h = n / 2; 0 < h; h /= 2){
 		for (int i = h; i < n; ++i){
 			for (int j = i - h; 0 <= j && A[j] > A[j + h]; j -= h){
 				swap(A[j], A[j + h]);
-				++sw;
 				printArray(A, n);
 			}
 		}
 	}
-	return sw;
 }
 
 int main(){
@@ -34,8 +48,7 @@ int main(){
 	for (int i = 0; i < n; ++i){
 		cin >> A[i];
 	}
-	int sw = shellSort(A, n);
-	printf("%d\n", sw);
+	shellSort2(A, n);
 
 	return 0;
 
