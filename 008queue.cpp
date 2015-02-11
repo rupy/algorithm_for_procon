@@ -26,7 +26,8 @@ bool isEnmpy(){
 
 int main(){
 
-	// TODO: ERROR CHECK
+	// TODO: ERROR CHECK, RING BUFFER
+
 	int n, q, p[100000];
 	string name;
 	int t = 0;
