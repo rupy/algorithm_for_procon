@@ -11,17 +11,19 @@ void printArray(int* A, int n){
 	printf("%d\n", A[n - 1]);
 }
 
-int* bubbleSort(int* A, int n){
+int bubbleSort(int* A, int n){
 
+	int sw = 0;
 	for (int i = 0; i < n; ++i){
 		for (int j = n - 1; i < j; --j){
 			if (A[j - 1] > A[j]){
 				swap(A[j - 1], A[j]);
+				++sw;
 				printArray(A, n);
 			}
 		}
 	}
-	return A;
+	return sw;
 }
 
 int main(){
@@ -32,7 +34,8 @@ int main(){
 	for (int i = 0; i < n; ++i){
 		cin >> A[i];
 	}
-	bubbleSort(A, n);
+	int sw = bubbleSort(A, n);
+	printf("%d\n", sw);
 
 	return 0;
 
