@@ -2,12 +2,12 @@
 
 using namespace std;
 
-typedef struct ss
+struct Node
 {
-	struct ss* next;
-	struct ss* prev;
+	Node* next;
+	Node* prev;
 	int key;
-} Node;
+};
 
 class LinkedList{
 
@@ -46,7 +46,7 @@ public:
 				delete(node);
 				break;
 			}
-		};
+		}
 
 	}
 	void deleteFirst(){
@@ -109,10 +109,12 @@ int main(){
 }
 
 /*
-5 100
-p1 150
-p2 80
-p3 200
-p4 350
-p5 20
+7
+insert 5
+insert 2
+insert 3
+insert 1
+delete 3
+insert 6
+delete 5
 */
