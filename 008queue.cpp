@@ -2,20 +2,20 @@
 
 using namespace std;
 
-typedef struct myqueue{
+typedef struct process{
 	string name;
 	int t;
-} MyQueue;
+} Process;
 
-MyQueue queue[1000];
+Process queue[1000];
 int head = 0, tail = 0;
 
-void enqueue(MyQueue q){
+void enqueue(Process q){
 	queue[tail] = q;
 	++tail;
 }
 
-MyQueue dequeue(){
+Process dequeue(){
 	++head;
 	return queue[head - 1];
 }
@@ -26,6 +26,7 @@ bool isEnmpy(){
 
 int main(){
 
+	// TODO: ERROR CHECK
 	int n, q, p[100000];
 	string name;
 	int t = 0;
@@ -33,23 +34,23 @@ int main(){
 	for (int i = 0; i < n; ++i)
 	{
 		cin >> name >> p[i];
-		MyQueue qq;
-		qq.name.append(name);
-		qq.t = p[i];
-		enqueue(qq);
+		Process pp;
+		pp.name += name;
+		pp.t = p[i];
+		enqueue(pp);
 	}
 	while (true){
 		if (isEnmpy()){
 			break;
 		}
-		MyQueue qq = dequeue();
-		qq.t -= q;
-		if (qq.t > 0){
+		Process pp = dequeue();
+		pp.t -= q;
+		if (pp.t > 0){
 			t += 100;
-			enqueue(qq);
+			enqueue(pp);
 		}else{
-			t += 100 + qq.t;
-			cout << qq.name << " " << t << endl;
+			t += 100 + pp.t;
+			cout << pp.name << " " << t << endl;
 		}
 	}
 	return 0;
