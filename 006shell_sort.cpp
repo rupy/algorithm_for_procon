@@ -2,8 +2,6 @@
 
 using namespace std;
 
-static const int MAX = 100;
-
 void printArray(int* A, int n){
 	for (int i = 0; i < n - 1; ++i){
 		printf("%d ", A[i]);
